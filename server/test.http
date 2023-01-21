@@ -1,0 +1,38 @@
+
+POST http://localhost:5000/products/addproduct
+Content-Type: application/json
+
+{
+    "name":"Kalem",
+    "createdAt":"09.05.2015",
+    "stock": 300,
+    "price": "4.99",
+    "image":"https://productimages.hepsiburada.net/s/83/300-443/110000025591953.jpg",
+    "category": "Kırtasiye",
+    "dealerID":"2050906010",
+    "rating": [
+        {
+            "name":"Ahmet",
+            "comment":"Mükemmel",
+            "rate":"5.0"
+        },
+        {
+            "name":"Ahmet",
+            "comment":"Kötü",
+            "rate":"1.0"
+        }
+    ],
+    "starpoint": "4.0",
+    "description":"Yazı Yazmak için"
+}
+
+###
+
+GET http://localhost:5000/products/allproducts
+Content-Type: application/json
+
+{
+   
+}
+
+###
