@@ -35,6 +35,22 @@ router.get("/allproducts", async (req, res) => {
 
 })
 
+router.get("/:productid", async (req, res) => {
+    try {
+
+        console.log(req.params)
+
+        const product = await Product.find({
+            "_id" : req.params.productid
+        })
+        return res.status(201).json(product)
+    } catch (err) {
+        console.log(err)
+        return res.json({ message: "create product failed" })
+    }
+
+})
+
 
 
 

@@ -1,39 +1,25 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from './components/Home';
+import Product from './components/Product';
 
 function App() {
-  const [products, setProducts] = useState([])
-
-
-  const fetchData = () => {
-    fetch("http://localhost:5000/products/allproducts")
-      .then(response => response.json())
-      .then(data => setProducts(data))
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
-
-
-  console.log(products)
-
 
   return (
-    <div className="App">
-      <div className='containter'>
-        {products.length > 0 ? products.map(product => {
-          return (<>
-            <h1>{product.name}</h1>
-            <img src={product.image} alt="" style={{ width: "200px", height: "200px" }} />
-            <a href='/'>Ürün Detaylerı</a>
-          </>
-          )
-        }) : <h1>Yükleniyor ..... </h1>
-        }
-      </div>
-    </div>
+
+    <BrowserRouter>
+      <h1>Navbar</h1>
+      
+      <Routes>
+        <Route>
+          <Route path="/products" element={<Home />} />
+          <Route path="/products/:id" element={<Product />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

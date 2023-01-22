@@ -3,32 +3,46 @@ POST http://localhost:5000/products/addproduct
 Content-Type: application/json
 
 {
-    "name":"Kalem",
-    "createdAt":"09.05.2015",
-    "stock": 300,
-    "price": "4.99",
-    "image":"https://productimages.hepsiburada.net/s/83/300-443/110000025591953.jpg",
-    "category": "Kırtasiye",
-    "dealerID":"2050906010",
+    "name":"Kulaklık",
+    "createdAt":"10.02.2022",
+    "stock": 50,
+    "price": "399.99",
+    "image":"https://www.monofiyat.com/images/thumbs/0023821_mf-product-acoustic-0128-mikrofonlu-kulak-ustu-kablosuz-bluetooth-kulaklik-siyah.jpeg",
+    "category": "Elektronik",
+    "dealerID":"1525354565",
     "rating": [
         {
-            "name":"Ahmet",
-            "comment":"Mükemmel",
-            "rate":"5.0"
+            "name":"Ali",
+            "comment":"iyi",
+            "rate":"3.0"
         },
         {
-            "name":"Ahmet",
-            "comment":"Kötü",
-            "rate":"1.0"
+            "name":"Murat",
+            "comment":"kötü",
+            "rate":"2.0"
+        },
+        {
+            "name":"Turan",
+            "comment":"Çok iyi",
+            "rate":"2.0"
         }
     ],
-    "starpoint": "4.0",
-    "description":"Yazı Yazmak için"
+    "starpoint": "4.5",
+    "description":"Müzik dinlemek için kullanılan bir tür elektronik alet "
 }
 
 ###
 
 GET http://localhost:5000/products/allproducts
+Content-Type: application/json
+
+{
+   
+}
+
+###
+
+GET http://localhost:5000/products/63cc5b1caec090951bcafbd9
 Content-Type: application/json
 
 {
