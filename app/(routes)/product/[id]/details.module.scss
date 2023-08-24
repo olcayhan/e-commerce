@@ -1,0 +1,94 @@
+@import "@app/vars.scss";
+
+.product_detail {
+  @include display(flex, column, center, center);
+  @include size(75vw, auto);
+  gap: 100px;
+  margin: 100px auto;
+  .product_detail_top {
+    @include display(flex, row, center, center);
+    @include size(100%, 60vh);
+    gap: 30px;
+
+    .detail_top_left {
+      @include display(flex, column, center, center);
+      gap: 20px;
+      @include size(100%, 100%);
+      border: 1px solid $black;
+
+      & > img {
+        @include size(100%, 50vh);
+      }
+
+      & > div {
+        @include display(flex, row, center, center);
+        gap: 20px;
+
+        & > .detail_images {
+          @include size(100px, 50px);
+          border: 1px solid $black;
+          > img {
+            @include size(100%, 100%);
+          }
+        }
+
+        & > button {
+          @include size(40px, 40px);
+          border: 1px solid $black;
+        }
+      }
+    }
+    .detail_top_right {
+      @include display(flex, column, flex-start, flex-start);
+      @include size(100%, 100%);
+      background-color: #f8f0e5;
+      border-radius: 16px;
+      gap: 20px;
+      padding: 30px;
+
+      .product_producer {
+        @include font(20px, 700);
+        color: $light-blue;
+      }
+
+      .product_title {
+        @include font(18px, 600);
+      }
+
+      .product_price {
+        @include font(24px, 600);
+        padding-top: 10px;
+        color: $black;
+      }
+
+      .product_details {
+        @include font(16px, 500);
+        padding-top: 30px;
+        opacity: 0.9;
+      }
+
+      .product_color {
+        @include font(16px, 700);
+        margin-top: auto;
+        > span {
+          @include font(16px, 500);
+          padding: 0 5px;
+        }
+      }
+      .detail_colors {
+        @include display(flex, row, flex-start, center);
+        gap: 20px;
+
+        > div {
+          @include size(120px, 60px);
+          border: 1px solid $black;
+        }
+      }
+    }
+  }
+
+  .product_detail_content {
+    @include size(100%, 50vh);
+    border: 1px solid $black;
+  }
+}

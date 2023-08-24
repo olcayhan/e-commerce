@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./Product.module.scss";
-import RateStar from "../RateStar";
 import Image from "next/image";
 import { ProductType } from "@/models/Product";
 
@@ -20,7 +19,7 @@ export default function Product({ item }: Prop) {
       <div className={styles.product_bottom}>
         <p>{item.title}</p>
         <div>
-          <RateStar /> <span>({item.rateCount})</span>
+          <span>({item.rateCount})</span>
         </div>
         <p>{item.price} TL</p>
         <button>Sepete Ekle</button>

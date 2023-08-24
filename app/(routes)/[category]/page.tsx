@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./category.module.scss";
+import styles from "./categories.module.scss";
 import CategoryItem from "@/components/category/CategoryItem";
 import { CategoryType } from "@/models/Category";
 
@@ -9,22 +9,22 @@ export default function page() {
     {
       title: "Erkek Giyim",
       image: "",
-      url: "/category/erkek-giyim",
+      url: "/giyim/erkek-giyim",
     },
     {
       title: "Kadın Giyim",
       image: "",
-      url: "/category/kadin-giyim",
+      url: "/giyim/kadin-giyim",
     },
     {
       title: "Çocuk Giyim",
       image: "",
-      url: "/category/cocuk-giyim",
+      url: "/giyim/cocuk-giyim",
     },
     {
       title: "Akıllı Telefonlar",
       image: "",
-      url: "/category/akilli-telefonlar",
+      url: "/elektronik/akilli-telefonlar",
     },
   ];
 
