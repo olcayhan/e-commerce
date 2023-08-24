@@ -1,0 +1,18 @@
+@import "../../app/vars.scss";
+
+.category_item {
+  @include display(flex, column, flex-start, center);
+  @include size(300px, 300px);
+  border: 1px solid $black;
+  text-decoration: none;
+
+  > img {
+    width: 100%;
+    background-color: $grey;
+  }
+
+  > p {
+    @include font(24px, 600);
+    color: $black;
+  }
+}

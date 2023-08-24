@@ -1,0 +1,7 @@
+@import "@app/vars.scss";
+
+.footer {
+  @include size(100%, 20px);
+  color: $black;
+  background-color: $grey;
+}

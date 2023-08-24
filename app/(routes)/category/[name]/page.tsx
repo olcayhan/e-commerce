@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./category.module.scss";
-import Product from "@/components/Product";
+import Product from "@/components/product/Product";
 
 export type Product = {
   url: string;

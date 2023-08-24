@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./Product.module.scss";
-import RateStar from "./RateStar";
+import RateStar from "../RateStar";
 import Image from "next/image";
-import { Product } from "@/app/(routes)/category/[id]/page";
+import { Product } from "@/app/(routes)/category/[name]/page";
 
 interface Prop {
   item: Product;
