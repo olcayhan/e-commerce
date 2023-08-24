@@ -1,20 +1,10 @@
 import React from "react";
 import styles from "./category.module.scss";
 import Product from "@/components/product/Product";
-
-export type Product = {
-  url: string;
-  title: string;
-  image?: string;
-  rate: number;
-  rateCount: number;
-  price: number;
-  tags?: string[];
-  discount?: string;
-};
+import { ProductType } from "@/models/Product";
 
 export default function page() {
-  let products: Product[] = [
+  let products: ProductType[] = [
     {
       url: "/",
       title: "Phone",
@@ -189,9 +179,7 @@ export default function page() {
       <div className={styles.filter_left}></div>
 
       <div className={styles.product_right}>
-        <div className={styles.product_sort}>
-
-        </div>
+        <div className={styles.product_sort}></div>
         <div className={styles.product_list}>
           {products.map((item, key) => {
             return <Product item={item} key={key} />;

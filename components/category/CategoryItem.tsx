@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "./CategoryItem.module.scss";
-import { CategoryItem } from "@/app/(routes)/page";
+import { CategoryType } from "@/models/Category";
+
 
 interface Prop {
-  item: CategoryItem;
+  item: CategoryType;
 }
 
 export default function CategoryItem({ item }: Prop) {

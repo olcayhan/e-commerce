@@ -3,10 +3,10 @@ import React from "react";
 import styles from "./Product.module.scss";
 import RateStar from "../RateStar";
 import Image from "next/image";
-import { Product } from "@/app/(routes)/category/[name]/page";
+import { ProductType } from "@/models/Product";
 
 interface Prop {
-  item: Product;
+  item: ProductType;
 }
 
 export default function Product({ item }: Prop) {

@@ -1,15 +1,11 @@
 import React from "react";
 import styles from "./category.module.scss";
-import CategoryItem from "@/components/catergory/CategoryItem";
+import CategoryItem from "@/components/category/CategoryItem";
+import { CategoryType } from "@/models/Category";
 
-export type CategoryItem = {
-  title: string;
-  image: string;
-  url: string;
-};
 
 export default function page() {
-  const data: CategoryItem[] = [
+  const data: CategoryType[] = [
     {
       title: "Erkek Giyim",
       image: "",
