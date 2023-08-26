@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
 export default function Navbar() {
+
+
+/* TODO header searching and basket, profile (login signup) */
   const data = [
     {
       title: "Giyim",

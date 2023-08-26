@@ -6,15 +6,27 @@ export default function page() {
   let details = [
     {
       title: "Çok Satanlar",
+      detail_img: "",
+      detail_title: "Ürünleri Kaçırma",
+      href: "/cok-satanlar",
     },
     {
       title: "Yeni Gelenler",
+      detail_img: "",
+      detail_title: "Sepette Fırsat",
+      href: "/yeni-gelenler",
     },
     {
       title: "Çok Değerlendirilenler",
+      detail_img: "",
+      detail_title: "Kaçırılmayacak Fırsatlar",
+      href: "/cok-degerlendirilenler",
     },
     {
       title: "İndirimdekiler",
+      detail_img: "",
+      detail_title: "İkincisi 1 TL",
+      href: "/indirimdekiler",
     },
   ];
 

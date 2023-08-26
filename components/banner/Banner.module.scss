@@ -12,10 +12,35 @@
   }
 
   > .banner_items {
-    @include display(flex, row, flex-start, flex-start);
+    @include display(flex, row, flex-start, center);
     @include size(100%, auto);
     overflow-x: auto;
     gap: 40px;
     padding: 20px;
+
+    > .banner_content {
+      @include display(flex, column, flex-start, center);
+      @include size(400px, 400px);
+      background-color: bisque;
+      border-radius: 16px;
+      flex-shrink: 0;
+      gap: 20px;
+      padding: 20px;
+
+      > p {
+        @include font(24px, 600);
+      }
+
+      > a {
+        @include size(50%, auto);
+        @include font(18px, 600);
+        text-align: center;
+        padding: 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: orange;
+        color: $white;
+      }
+    }
   }
 }
