@@ -3,6 +3,10 @@ import styles from "./details.module.scss";
 import Image from "next/image";
 
 export default function page() {
+  {
+    /* TODO // define type for product detail  */
+  }
+
   const data = {
     images: ["", "", "", ""],
     producer: "Mini Baby",
@@ -61,7 +65,9 @@ export default function page() {
         </div>
       </div>
 
-      <div className={styles.product_detail_content}></div>
+      <div className={styles.product_detail_content}>
+        {/* TODO // comments blog */}
+      </div>
     </div>
   );
 }

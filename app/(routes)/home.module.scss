@@ -1,1 +1,7 @@
 @import "../vars.scss";
+
+.home_main {
+  @include display(flex, column, flex-start, center);
+  gap: 30px;
+  padding: 50px;
+}

@@ -1,0 +1,21 @@
+@import "@app/vars.scss";
+
+.banner_main {
+  @include display(flex, column, flex-start, flex-start);
+  @include size(100%, auto);
+  min-height: 400px;
+  padding: 20px;
+  gap: 30px;
+
+  > h1 {
+    @include font(50px, 700);
+  }
+
+  > .banner_items {
+    @include display(flex, row, flex-start, flex-start);
+    @include size(100%, auto);
+    overflow-x: auto;
+    gap: 40px;
+    padding: 20px;
+  }
+}
