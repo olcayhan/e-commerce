@@ -2,9 +2,7 @@ import React from "react";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
 export default function Navbar() {
-
-
-/* TODO header searching and basket, profile (login signup) */
+  /* TODO header searching and basket, profile (login signup) */
   const data = [
     {
       title: "Giyim",
@@ -29,14 +27,9 @@ export default function Navbar() {
   ];
   return (
     <div className={styles.navbar}>
-      <Link href="/" className={styles.navbar_left}>
-        E-Commerce
-      </Link>
-      <div className={styles.navbar_right}>
-        {data.map((item, key) => {
-          return <Link href={item.href}>{item.title}</Link>;
-        })}
-      </div>
+      {data.map((item, key) => {
+        return <Link href={item.href}>{item.title}</Link>;
+      })}
     </div>
   );
 }

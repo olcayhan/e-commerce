@@ -1,0 +1,54 @@
+@import "@app/vars.scss";
+.header_main {
+  @include display(flex, row, space-between, center);
+  @include size(100%, 100px);
+  padding: 0 50px;
+
+  & > header.logo {
+    @include size(100%, 100px);
+    border: 1px solid #eee;
+  }
+
+  & > .header_search {
+    @include display(flex, row, flex-start, center);
+    @include size(100%, 50px);
+    border: 1px solid $black;
+    width: 60vw;
+    padding: 0 20px;
+    gap: 10px;
+    border-radius: 30px;
+    > input {
+      @include size(100%, auto);
+      @include font(15px, 500);
+      border: none;
+      outline: none;
+    }
+    > img {
+      margin-bottom: 5px;
+    }
+  }
+
+  .header_right {
+    @include display(flex, row, flex-start, center);
+    gap: 30px;
+
+    & > a {
+      @include display(flex, row, flex-start, center);
+      @include size(150px, 50px);
+      border: 1px solid $black;
+      padding: 0 15px;
+      gap: 10px;
+      background-color: $white;
+      border-radius: 30px;
+
+      & > p {
+        @include font(16px, 600);
+        color: $black;
+      }
+
+      &:hover {
+        border: 1px solid orange;
+      }
+    }
+  }
+}
