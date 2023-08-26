@@ -5,6 +5,8 @@
   @include size(300px, 300px);
   border: 1px solid $black;
   text-decoration: none;
+  gap: 20px;
+  padding: 10px;
 
   > img {
     width: 100%;
