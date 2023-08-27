@@ -1,0 +1,104 @@
+@import "app/vars.scss";
+
+.basket_main {
+  @include display(flex, row, center, flex-start);
+  @include size(100%, auto);
+  gap: 30px;
+  padding: 100px 300px;
+  border: 1px solid #111;
+
+  .basket_products {
+    @include display(flex, column, center, flex-start);
+    @include size(100%, auto);
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #111;
+    border-radius: 16px;
+    > .basket_item {
+      @include display(flex, row, space-between, center);
+      @include size(100%, 200px);
+      padding: 15px;
+      border-top: 1px solid #ccc;
+
+      .item_left {
+        @include display(flex, row, flex-start, center);
+        gap: 10px;
+
+        > img {
+          @include size(150px, 150px);
+        }
+
+        > p {
+          @include font(13px, 500);
+          width: 300px;
+          > span {
+            font-weight: 700;
+          }
+        }
+      }
+
+      .item_right {
+        @include display(flex, row, flex-end, center);
+        gap: 25px;
+
+        .item_counter {
+          @include display(flex, row, center, center);
+          @include size(150px, 50px);
+          border: 1px solid #ccc;
+        }
+
+        > p {
+          @include font(16px, 700);
+        }
+        > button {
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .basket_checkout {
+    @include display(flex, column, flex-start, flex-start);
+    @include size(400px, auto);
+    padding: 20px;
+    gap: 15px;
+    border: 1px solid #111;
+    border-radius: 16px;
+
+    > h1 {
+      @include font(24px, 700);
+    }
+
+    > .checkout_content {
+      @include display(flex, column, flex-start, center);
+      @include size(100%, auto);
+      gap: 10px;
+      padding: 15px 0;
+
+      > div {
+        @include display(flex, row, space-between, center);
+        @include size(100%, auto);
+        > p {
+          @include font(14px, 500);
+        }
+        > span {
+          @include font(14px, 700);
+        }
+      }
+      .checkout_total {
+        border-top: 1px solid #ccc;
+        padding: 10px 0;
+      }
+    }
+
+    > a {
+      width: 100%;
+      background-color: orange;
+      color: $white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 16px;
+    }
+  }
+}
