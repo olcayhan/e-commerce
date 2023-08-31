@@ -4,3 +4,8 @@
   padding: 0;
   text-decoration: none;
 }
+
+html,body{
+  width: 80vw;
+  margin: auto;
+}

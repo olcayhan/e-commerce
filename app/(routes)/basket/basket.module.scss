@@ -4,7 +4,7 @@
   @include display(flex, row, center, flex-start);
   @include size(100%, auto);
   gap: 30px;
-  padding: 100px 300px;
+  padding: 50px;
   border: 1px solid #111;
 
   .basket_products {

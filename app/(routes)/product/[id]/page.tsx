@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./details.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function page() {
   {
@@ -16,8 +17,36 @@ export default function page() {
     price: 199.99,
     rate: 4,
     rateCount: 1323,
-    colors: ["Black", "Red"],
+    color: "Green",
+    otherColors: [
+      {
+        color: "Blue",
+        href: "/blue",
+        image: "",
+      },
+      {
+        color: "Dark",
+        href: "/dark",
+        image: "",
+      },
+    ],
     comments: [
+      {
+        user: "asd",
+        title: "Çok iyi bir ürün",
+        comment:
+          "Kurulumu oldukça basit eşim 15 dakikada tek başına kurdu. Boyasız ahşap görüntü olarak çok hoş ve sallanırken ses yapmıyor. İlerleyen zamanlarda ahşabı zarar görürse güncellerim. Teşekkürler ebebek.",
+        createdAt: "15-02-2023",
+        rate: 4,
+      },
+      {
+        user: "asd",
+        title: "Çok iyi bir ürün",
+        comment:
+          "Kurulumu oldukça basit eşim 15 dakikada tek başına kurdu. Boyasız ahşap görüntü olarak çok hoş ve sallanırken ses yapmıyor. İlerleyen zamanlarda ahşabı zarar görürse güncellerim. Teşekkürler ebebek.",
+        createdAt: "15-02-2023",
+        rate: 4,
+      },
       {
         user: "asd",
         title: "Çok iyi bir ürün",
@@ -54,19 +83,44 @@ export default function page() {
           <p className={styles.product_details}>{data.productDetail}</p>
 
           <p className={styles.product_color}>
-            Renk: <span>{data.colors[0]}</span>
+            Renk: <span>{data.color}</span>
           </p>
           <div className={styles.detail_colors}>
             {/* colors */}
-            {data.colors.map((item, key) => {
-              return <div key={key}>{item}</div>;
+            {data.otherColors.map((item, key) => {
+              return (
+                <Link href={item.href} key={key}>
+                  <Image
+                    src={item.image}
+                    alt={item.href}
+                    height={40}
+                    width={40}
+                  />
+                  <p>{item.color}</p>
+                </Link>
+              );
             })}
           </div>
         </div>
       </div>
 
-      <div className={styles.product_detail_content}>
+      <div className={styles.product_comment}>
         {/* TODO // comments blog */}
+
+        {data.comments.map((item, key) => {
+          return (
+            <div className={styles.comment_item}>
+              <h1>{item.user}</h1>
+              <p>{item.title}</p>
+              <span>{item.comment}</span>
+
+              <div>
+                <span>{item.rate}</span>
+                <p>{item.createdAt}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
