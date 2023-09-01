@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import styles from "./Product.module.scss";
@@ -22,7 +24,13 @@ export default function Product({ item }: Prop) {
           <span>({item.rateCount})</span>
         </div>
         <p>{item.price} TL</p>
-        <button>Sepete Ekle</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          Sepete Ekle
+        </button>
       </div>
     </Link>
   );
