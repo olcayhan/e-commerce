@@ -1,63 +1,19 @@
+"use client";
 import React from "react";
 import styles from "./details.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import {product} from "@/data/product";
+import { useParams } from "next/navigation";
 
 export default function page() {
-  {
-    /* TODO // define type for product detail  */
-  }
+  const params = useParams();
+  const { id } = params;
+  let data = product.find((item) => item.id === id);
 
-  const data = {
-    images: ["", "", "", ""],
-    producer: "Mini Baby",
-    productTitle: "Kauçuk Kenar Koruyucu 2 m",
-    productDetail:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea id esse consectetur voluptatibus dignissimos deleniti, sunt asperiores repellat libero quibusdam culpa ducimus, alias cum velit quia in quo maxime ratione repudiandae reiciendis deserunt praesentium. Hic laboriosam magnam, aliquid, praesentium asperiores quia nemo in nesciunt optio, nulla sequi tenetur unde consequuntur.",
-    price: 199.99,
-    rate: 4,
-    rateCount: 1323,
-    color: "Green",
-    otherColors: [
-      {
-        color: "Blue",
-        href: "/blue",
-        image: "",
-      },
-      {
-        color: "Dark",
-        href: "/dark",
-        image: "",
-      },
-    ],
-    comments: [
-      {
-        user: "asd",
-        title: "Çok iyi bir ürün",
-        comment:
-          "Kurulumu oldukça basit eşim 15 dakikada tek başına kurdu. Boyasız ahşap görüntü olarak çok hoş ve sallanırken ses yapmıyor. İlerleyen zamanlarda ahşabı zarar görürse güncellerim. Teşekkürler ebebek.",
-        createdAt: "15-02-2023",
-        rate: 4,
-      },
-      {
-        user: "asd",
-        title: "Çok iyi bir ürün",
-        comment:
-          "Kurulumu oldukça basit eşim 15 dakikada tek başına kurdu. Boyasız ahşap görüntü olarak çok hoş ve sallanırken ses yapmıyor. İlerleyen zamanlarda ahşabı zarar görürse güncellerim. Teşekkürler ebebek.",
-        createdAt: "15-02-2023",
-        rate: 4,
-      },
-      {
-        user: "asd",
-        title: "Çok iyi bir ürün",
-        comment:
-          "Kurulumu oldukça basit eşim 15 dakikada tek başına kurdu. Boyasız ahşap görüntü olarak çok hoş ve sallanırken ses yapmıyor. İlerleyen zamanlarda ahşabı zarar görürse güncellerim. Teşekkürler ebebek.",
-        createdAt: "15-02-2023",
-        rate: 4,
-      },
-    ],
-    tags: [],
-  };
+  if (data == undefined) {
+    return null;
+  }
 
   return (
     <div className={styles.product_detail}>
@@ -81,12 +37,13 @@ export default function page() {
           <p className={styles.product_title}>{data.productTitle}</p>
           <p className={styles.product_price}>{data.price} TL</p>
           <p className={styles.product_details}>{data.productDetail}</p>
+          {data.color && (
+            <p className={styles.product_color}>
+              Renk: <span>{data.color}</span>
+            </p>
+          )}
 
-          <p className={styles.product_color}>
-            Renk: <span>{data.color}</span>
-          </p>
           <div className={styles.detail_colors}>
-            {/* colors */}
             {data.otherColors.map((item, key) => {
               return (
                 <Link href={item.href} key={key}>
@@ -101,15 +58,28 @@ export default function page() {
               );
             })}
           </div>
+
+          {data.size && (
+            <p className={styles.product_color}>
+              Beden: <span>{data.size}</span>
+            </p>
+          )}
+          <div className={styles.detail_colors}>
+            {data.otherSizes?.map((item, key) => {
+              return (
+                <Link href={item.href} key={key}>
+                  <p>{item.title}</p>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <div className={styles.product_comment}>
-        {/* TODO // comments blog */}
-
         {data.comments.map((item, key) => {
           return (
-            <div className={styles.comment_item}>
+            <div className={styles.comment_item} key={key}>
               <h1>{item.user}</h1>
               <p>{item.title}</p>
               <span>{item.comment}</span>

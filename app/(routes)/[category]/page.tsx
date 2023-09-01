@@ -1,32 +1,19 @@
+"use client";
+
 import React from "react";
 import styles from "./categories.module.scss";
 import CategoryItem from "@/components/category/CategoryItem";
-import { CategoryType } from "@/models/Category";
-
+import category from "@/data/category";
+import { useParams } from "next/navigation";
 
 export default function page() {
-  const data: CategoryType[] = [
-    {
-      title: "Erkek Giyim",
-      image: "",
-      url: "/giyim/erkek-giyim",
-    },
-    {
-      title: "Kadın Giyim",
-      image: "",
-      url: "/giyim/kadin-giyim",
-    },
-    {
-      title: "Çocuk Giyim",
-      image: "",
-      url: "/giyim/cocuk-giyim",
-    },
-    {
-      title: "Akıllı Telefonlar",
-      image: "",
-      url: "/elektronik/akilli-telefonlar",
-    },
-  ];
+  const params = useParams();
+
+  console.log(params.category);
+
+  let data = category.filter((item) =>
+    item.category.find((item2) => item2 === params.category)
+  );
 
   return (
     <div className={styles.category_main}>
