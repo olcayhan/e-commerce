@@ -4,10 +4,10 @@
   @include display(flex, row, center, center);
   @include size(100%, auto);
   border-bottom: 1px solid $black;
-  padding: 10px;
   gap: 40px;
-  div {
+  > div {
     position: relative;
+    height: 40px;
     > a {
       @include font(18px, 600);
       color: $black;
@@ -26,12 +26,21 @@
       @include display(none, column, flex-start, flex-start);
       position: absolute;
       background-color: $white;
+      margin-top: 20px;
       left: 50%;
       transform: translateX(-50%);
+      transition: all 2s ease;
+      overflow-y: hidden;
       > a {
+        @include font(14px, 600);
+        color: $black;
         min-width: 150px;
         padding: 15px;
-        @include font(14px, 600);
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: orange;
+        }
       }
     }
   }

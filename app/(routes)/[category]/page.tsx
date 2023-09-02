@@ -9,7 +9,6 @@ import { useParams } from "next/navigation";
 export default function page() {
   const params = useParams();
 
-  console.log(params.category);
 
   let data = category.filter((item) =>
     item.category.find((item2) => item2 === params.category)

@@ -12,9 +12,8 @@
 
     .detail_top_left {
       @include display(flex, column, center, center);
-      gap: 20px;
       @include size(100%, 100%);
-      border: 1px solid $black;
+      gap: 20px;
 
       & > img {
         @include size(100%, 50vh);
@@ -26,7 +25,9 @@
 
         & > .detail_images {
           @include size(100px, 50px);
-          border: 1px solid $black;
+          border: 1px solid #ddd;
+          border-radius: 0;
+          cursor: pointer;
           > img {
             @include size(100%, 100%);
           }
@@ -34,7 +35,9 @@
 
         & > button {
           @include size(40px, 40px);
-          border: 1px solid $black;
+          cursor: pointer;
+          border: 1px solid $white;
+          border-radius: 50%
         }
       }
     }
@@ -85,10 +88,6 @@
           padding: 10px;
           border: 1px solid $black;
           border-radius: 12px;
-          > img {
-            border: 1px solid $black;
-            border-radius: 50%;
-          }
         }
       }
     }

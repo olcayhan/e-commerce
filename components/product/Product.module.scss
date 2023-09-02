@@ -1,33 +1,47 @@
 @import "app/vars.scss";
 .product_main {
   @include display(flex, column, flex-start, flex-start);
-  @include size(auto, 400px);
-  min-width: 250px;
+  max-width: 250px;
   border: 1px solid #111;
   border-radius: 16px;
   padding: 15px;
   text-decoration: none;
   color: #111;
+  gap: 40px;
+  transition: all 0.3s ease;
+  &:hover {
+    border: 1px solid orange;
+    transform: scale(1.1)
+  }
 
   .product_top {
     @include size(100%, 180px);
-    background-color: #ddd;
+    > img {
+      @include size(100%, 180px);
+    }
   }
   .product_bottom {
-    @include display(flex, column, center, flex-start);
-    @include size(100%, 220px);
-    gap: 20px;
-    padding: 10px;
+    @include display(flex, column, flex-start, flex-start);
+    @include size(100%, auto);
+    gap: 15px;
 
     & > button {
       @include size(100%, 50px);
       @include font(16px, 600);
-      margin-top: auto;
       border-radius: 30px;
       cursor: pointer;
       border: none;
+      margin-top: 20px;
       background-color: orange;
       color: #fff;
+    }
+    > p {
+      @include font(14px, 600);
+      color: $black;
+    }
+
+    .item_price {
+      @include font(18px, 700);
     }
   }
 }

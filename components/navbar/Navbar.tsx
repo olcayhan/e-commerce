@@ -12,7 +12,6 @@ export default function Navbar() {
             <Link href={item.href}>{item.title}</Link>
             <div className={styles.navbar_subtitle}>
               {item.subtitles?.map((sub, key) => {
-                console.log(sub)
                 return (
                   <Link href={sub.url} key={key}>
                     {sub.title}

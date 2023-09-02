@@ -21,9 +21,9 @@ export default function Product({ item }: Prop) {
       <div className={styles.product_bottom}>
         <p>{item.title}</p>
         <div>
-          <span>({item.rateCount})</span>
+          <span>* * * * * * ({item.rateCount})</span>
         </div>
-        <p>{item.price} TL</p>
+        <p className={styles.item_price}>{item.price} TL</p>
         <button
           onClick={(e) => {
             e.preventDefault();
