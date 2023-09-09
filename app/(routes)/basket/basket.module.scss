@@ -51,9 +51,10 @@
     }
 
     > a {
+      @include font(16px, 600);
       width: 100%;
       background-color: orange;
-      color: $white;
+      color: #fff;
       text-align: center;
       padding: 20px;
       border-radius: 16px;

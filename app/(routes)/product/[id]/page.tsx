@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 
 import right from "@assets/svg/angle-right.svg";
 import left from "@assets/svg/angle-left.svg";
+import CommentItem from "@/components/details/comment/CommentItem";
 
 export default function page() {
   const [counter, setCount] = useState(0);
@@ -16,14 +17,19 @@ export default function page() {
   let data = product.find((item) => item.url === id);
 
   if (data == undefined) {
-    return null;
+    return <div></div>;
   }
 
   return (
     <div className={styles.product_detail}>
       <div className={styles.product_detail_top}>
         <div className={styles.detail_top_left}>
-          <Image src={data.images[counter]} alt="" width={100} height={100} />
+          <Image
+            src={data.images[counter]}
+            alt={"image" + counter}
+            width={100}
+            height={100}
+          />
           <div>
             <button
               onClick={() => {
@@ -51,7 +57,7 @@ export default function page() {
             })}
             <button
               onClick={() => {
-                counter < data.images.length-1 && setCount(counter + 1);
+                counter < data?.images.length - 1 && setCount(counter + 1);
               }}
             >
               <Image src={right} alt="right-arrow" width={25} height={25} />
@@ -72,11 +78,15 @@ export default function page() {
           <div className={styles.detail_colors}>
             {data.otherColors.map((item, key) => {
               return (
-                <Link href={item.href} key={key} style={
-                  item.color === data?.color
-                    ? { borderColor: "orange" }
-                    : { borderColor: "#ddd" }
-                }>
+                <Link
+                  href={item.href}
+                  key={key}
+                  style={
+                    item.color === data?.color
+                      ? { borderColor: "orange" }
+                      : { borderColor: "#ddd" }
+                  }
+                >
                   <Image
                     src={item.image}
                     alt={item.href}
@@ -88,38 +98,13 @@ export default function page() {
               );
             })}
           </div>
-
-          {/* {data.size && (
-            <p className={styles.product_color}>
-              Beden: <span>{data.size}</span>
-            </p>
-          )}
-          <div className={styles.detail_colors}>
-            {data.otherSizes?.map((item, key) => {
-              return (
-                <Link href={item.href} key={key}>
-                  <p>{item.title}</p>
-                </Link>
-              );
-            })}
-          </div> */}
+          <button>Sepete Ekle</button>
         </div>
       </div>
 
       <div className={styles.product_comment}>
         {data.comments.map((item, key) => {
-          return (
-            <div className={styles.comment_item} key={key}>
-              <h1>{item.user}</h1>
-              <p>{item.title}</p>
-              <span>{item.comment}</span>
-
-              <div>
-                <span>{item.rate}</span>
-                <p>{item.createdAt}</p>
-              </div>
-            </div>
-          );
+          return <CommentItem item={item} key={key} />;
         })}
       </div>
     </div>

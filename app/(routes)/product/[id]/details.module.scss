@@ -37,7 +37,7 @@
           @include size(40px, 40px);
           cursor: pointer;
           border: 1px solid $white;
-          border-radius: 50%
+          border-radius: 50%;
         }
       }
     }
@@ -90,6 +90,16 @@
           border-radius: 12px;
         }
       }
+
+      > button {
+        @include size(200px, 50px);
+        @include font(16px, 600);
+        color: #fff;
+        border-radius: 16px;
+        border: none;
+        background-color: orange;
+        cursor: pointer;
+      }
     }
   }
 
@@ -100,32 +110,5 @@
     border: 1px solid $black;
     gap: 10px;
     padding: 50px;
-
-    .comment_item {
-      @include display(flex, column, center, flex-start);
-      @include size(100%, auto);
-      gap: 15px;
-      padding: 20px;
-      border: 1px solid $black;
-
-      > h1 {
-        @include font(24px, 700);
-      }
-
-      > p {
-        @include font(18px, 600);
-      }
-      > span {
-        @include font(14px, 500);
-      }
-
-      > div {
-        @include display(flex, row, flex-start, center);
-        gap: 10px;
-        > p {
-          @include font(14px, 500);
-        }
-      }
-    }
   }
 }
