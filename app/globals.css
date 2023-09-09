@@ -5,7 +5,9 @@
   text-decoration: none;
 }
 
-html,body{
-  width: 80vw;
-  margin: auto;
+
+main{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 50px 0;
 }

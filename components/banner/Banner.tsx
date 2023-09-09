@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Banner.module.scss";
 import Product from "../product/Product";
-import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/product";

@@ -1,56 +1,15 @@
 import React from "react";
 import styles from "./basket.module.scss";
 import Link from "next/link";
-import Image from "next/image";
-
-import trash from "@assets/svg/trash.svg";
+import { data } from "@/data/basket";
+import BasketItem from "@/components/basket-item/BasketItem";
 
 export default function page() {
-  const data = {
-    prices: {
-      total: 240,
-      cargo: 0,
-      discount: 0,
-      product: 240,
-    },
-    items: [
-      {
-        title: "Antiperspirant Whitening Roll-on - 75 ml",
-        producerTitle: "Rise & Shine",
-        price: 120,
-        image: "",
-      },
-      {
-        title: "Antiperspirant Whitening Roll-on - 75 ml",
-        producerTitle: "Rise & Shine",
-        price: 120,
-        image: "",
-      },
-    ],
-  };
-
   return (
     <div className={styles.basket_main}>
       <div className={styles.basket_products}>
         {data.items.map((product, key) => {
-          return (
-            <div className={styles.basket_item}>
-              <div className={styles.item_left}>
-                <Image src={product.image} alt="" width={150} height={150} />
-                <p>
-                  <span>{product.producerTitle}</span> {product.title}
-                </p>
-              </div>
-
-              <div className={styles.item_right}>
-                <div className={styles.item_counter}></div>
-                <p>{product.price} TL</p>
-                <button>
-                  <Image src={trash} alt="trash" width={20} height={20} />
-                </button>
-              </div>
-            </div>
-          );
+          return <BasketItem product={product} key={key} />;
         })}
       </div>
       <div className={styles.basket_checkout}>
