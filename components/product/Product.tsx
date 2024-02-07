@@ -26,9 +26,14 @@ export default function Product({ item }: Prop) {
   const [isLoading, setLoading] = useState<boolean>(false);
 
   return (
-    <Link href={item.url} minW="300px" _hover={{ textDecoration: "none" }}>
-      <Card minH={{ md: "400px", lg: "500px" }} w={"100%"} p={0}>
-        <CardBody>
+    <Link
+      href={item.url}
+      minW="250px"
+      h={"auto"}
+      _hover={{ textDecoration: "none" }}
+    >
+      <Card h={{ md: "300px", lg: "400px" }} w={"100%"} gap={3}>
+        <CardBody py={0}>
           {isLoading ? (
             <Box>
               <Skeleton height="200px" />
@@ -47,7 +52,7 @@ export default function Product({ item }: Prop) {
               {item.image && (
                 <Image src={item.image} alt={item.url} width={300} />
               )}
-              <Text fontSize={{ md: "16px", lg: "20px" }} fontWeight="bold">
+              <Text fontSize={{ md: "12px", lg: "16px" }} fontWeight="bold">
                 {item.title}
               </Text>
 
@@ -58,13 +63,13 @@ export default function Product({ item }: Prop) {
                   <Icon as={StarIcon} w={4} h={4} />
                   <Icon as={StarIcon} w={4} h={4} />
                   <Icon as={StarIcon} w={4} h={4} />
-                  <Text fontSize={{ md: "12px", lg: "20px" }}>
+                  <Text fontSize={{ md: "12px", lg: "16px" }}>
                     ({item.rateCount})
                   </Text>
                 </Flex>
               </Box>
               <Text
-                fontSize={{ md: "18px", lg: "24px" }}
+                fontSize={{ md: "16px", lg: "20px" }}
                 mt={6}
                 fontWeight="extrabold"
               >
@@ -73,7 +78,7 @@ export default function Product({ item }: Prop) {
             </Flex>
           )}
         </CardBody>
-        <CardFooter>
+        <CardFooter py={0}>
           <Button
             isLoading={isLoading}
             bgColor={"orange"}
