@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Product from "../product/Product";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { products } from "@/data/product";
 import {
   Box,
@@ -22,7 +22,7 @@ interface Prop {
 
 type detailType = {
   title: string;
-  detail_img: string;
+  detail_img: StaticImageData | string;
   detail_title: string;
   href: string;
 };
@@ -66,6 +66,7 @@ export default function Banner({ item }: Prop) {
             bgColor={"bisque"}
             w={"400px"}
             h={"400px"}
+            flexShrink={0}
             borderRadius={"16px"}
             gap={"20px"}
             padding={"20px"}

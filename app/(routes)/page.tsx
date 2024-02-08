@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./home.module.scss";
 import Banner from "@/components/banner/Banner";
+import android from "@/assets/images/android.webp";
 
 export default function page() {
-  let details = [
+  const details = [
     {
       title: "Çok Satanlar",
-      detail_img: "",
+      detail_img: android,
       detail_title: "Ürünleri Kaçırma",
       href: "/cok-satanlar",
     },
