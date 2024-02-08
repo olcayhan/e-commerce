@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./home.module.scss";
 import Banner from "@/components/banner/Banner";
 import android from "@/assets/images/android.webp";
+import Carousel from "@/components/carousel/Carousel";
 
 export default function page() {
   const details = [
@@ -33,6 +34,7 @@ export default function page() {
 
   return (
     <div className={styles.home_main}>
+      <Carousel />
       {details.map((item, key) => {
         return <Banner item={item} key={key} />;
       })}
