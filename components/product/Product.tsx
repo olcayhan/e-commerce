@@ -28,11 +28,11 @@ export default function Product({ item }: Prop) {
   return (
     <Link
       href={item.url}
-      minW="250px"
+      w={"250px"}
       h={"auto"}
       _hover={{ textDecoration: "none" }}
     >
-      <Card h={{ md: "300px", lg: "400px" }} w={"100%"} gap={3}>
+      <Card h={"400px"} w={"100%"} gap={3}>
         <CardBody py={0}>
           {isLoading ? (
             <Box>
