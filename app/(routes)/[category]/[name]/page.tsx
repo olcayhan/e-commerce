@@ -99,18 +99,37 @@ export default function page() {
         "Puansız Ürünler",
       ],
     },
+    {
+      name: "RAM",
+      type: "checkbox",
+      queryString: "ramQuery",
+      values: ["4GB", "8GB", "16GB", "32GB"],
+    },
+    {
+      name: "Hafıza",
+      type: "checkbox",
+      queryString: "storageQuery",
+      values: ["32GB", "64GB", "128GB", "256GB", "512GB"],
+    },
   ];
 
   return (
     <Flex direction={"row"} gap={6}>
       <Box
-        position={"sticky"}
-        w={"20vw"}
-        border={"1px solid #e0e0e0"}
-        minH={"100vh"}
+        position={"relative"}
+        flexShrink={0}
+        w={"300px"}
         h={"auto"}
+        border={"1px solid #e0e0e0"}
       >
-        <Accordion allowMultiple>
+        <Accordion
+          position={"sticky"}
+          h={"100vh"}
+          top={"0px"}
+          overflowY={"auto"}
+          allowMultiple
+          defaultIndex={[...filters.map((element, index) => index)]}
+        >
           {filters.map((filter, index) => {
             return (
               <AccordionItem key={index}>
@@ -206,7 +225,7 @@ export default function page() {
         </Flex>
         <Flex
           direction={"row"}
-          h={"80px"}
+          maxH={"80px"}
           justifyContent={"flex-start"}
           alignItems={"center"}
           gap={3}
