@@ -15,7 +15,8 @@ export default function Header() {
       alignItems={"center"}
       justifyContent={"space-between"}
       gap={5}
-      pb={4}
+      py={4}
+      px={2}
     >
       <Link href="/" w={"100px"} h={"50px"} position={"relative"}>
         <Image src="" alt="header_logo" fill />
@@ -61,7 +62,7 @@ export default function Header() {
         direction={"row"}
         alignItems={"center"}
         justifyContent={"center"}
-        gap={14}
+        gap={6}
         h={"50px"}
       >
         <Link
