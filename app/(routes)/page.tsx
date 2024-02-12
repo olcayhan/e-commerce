@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./home.module.scss";
 import Banner from "@/components/banner/Banner";
 import android from "@/assets/images/android.webp";
 import Carousel from "@/components/carousel/Carousel";
+import { Flex } from "@chakra-ui/react";
 
 export default function page() {
   const details = [
@@ -33,11 +33,17 @@ export default function page() {
   ];
 
   return (
-    <div className={styles.home_main}>
+    <Flex
+      direction={"column"}
+      justifyContent={"flex-start"}
+      alignItems={"center"}
+      gap={"30px"}
+      padding={"50px"}
+    >
       <Carousel />
       {details.map((item, key) => {
         return <Banner item={item} key={key} />;
       })}
-    </div>
+    </Flex>
   );
 }
