@@ -1,6 +1,10 @@
 import React from "react";
-import styles from "./Footer.module.scss";
+import { Box } from "@chakra-ui/react";
 
 export default function Footer() {
-  return <div className={styles.footer}>Tüm Hakları Saklıdır</div>;
+  return (
+    <Box w={"100%"} h={"200px"} bgColor={"orange"}>
+      Tüm Hakları Saklıdır
+    </Box>
+  );
 }

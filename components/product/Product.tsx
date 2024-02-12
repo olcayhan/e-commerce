@@ -32,7 +32,7 @@ export default function Product({ item }: Prop) {
       h={"auto"}
       _hover={{ textDecoration: "none" }}
     >
-      <Card h={"400px"} w={"100%"} gap={3}>
+      <Card h={"400px"} w={"100%"} gap={3} py={2}>
         <CardBody py={0}>
           {isLoading ? (
             <Box>

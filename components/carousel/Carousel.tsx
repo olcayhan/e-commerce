@@ -32,7 +32,7 @@ export default function Carousel() {
     <Flex
       direction={"column"}
       bgColor={caruselData[tabIndex].bgColor}
-      w={"100vw"}
+      w={"99vw"}
       h={"600px"}
       justifyContent={"space-evenly"}
       alignItems={"center"}
