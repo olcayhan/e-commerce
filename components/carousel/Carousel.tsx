@@ -32,9 +32,8 @@ export default function Carousel() {
     <Flex
       direction={"column"}
       bgColor={caruselData[tabIndex].bgColor}
-      w={"100%"}
-      h={"500px"}
-      borderRadius={"24px"}
+      w={"100vw"}
+      h={"600px"}
       justifyContent={"space-evenly"}
       alignItems={"center"}
     >
@@ -60,10 +59,10 @@ export default function Carousel() {
       </Flex>
 
       <Link
-        w={"75%"}
-        h={"350px"}
+        w={"60%"}
+        h={"450px"}
         position={"relative"}
-        borderRadius={"24px"}
+        borderRadius={"36px"}
         overflow={"hidden"}
         cursor={"pointer"}
       >
