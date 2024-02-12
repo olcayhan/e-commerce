@@ -1,8 +1,0 @@
-@import "@app/vars.scss";
-
-.category_main {
-  @include display(flex, row, center, center);
-  flex-wrap: wrap;
-  gap: 50px;
-  padding: 100px;
-}
