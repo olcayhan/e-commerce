@@ -21,6 +21,7 @@ export default function BasketItem({ product }: any) {
       justifyContent={"space-between"}
       alignItems={"center"}
       p={"15px"}
+      gap={"30px"}
     >
       <Flex justifyContent={"flex-start"} alignItems={"center"} gap={"10px"}>
         <Box w={"150px"} h={"150px"} position={"relative"}>

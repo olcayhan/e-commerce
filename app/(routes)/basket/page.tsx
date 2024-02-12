@@ -1,41 +1,96 @@
 import React from "react";
-import styles from "./basket.module.scss";
-import Link from "next/link";
 import { data } from "@/data/basket";
 import BasketItem from "@/components/basket-item/BasketItem";
+import { Card, Divider, Flex, Link, Text } from "@chakra-ui/react";
 
 export default function page() {
   return (
-    <div className={styles.basket_main}>
-      <div className={styles.basket_products}>
+    <Flex
+      justifyContent={"center"}
+      alignItems={"flex-start"}
+      w={"100%"}
+      gap={"30px"}
+      p={"50px"}
+    >
+      <Flex
+        direction={"column"}
+        justifyContent={"center"}
+        alignItems={"flex-start"}
+        gap={"20px"}
+        borderRadius={"16px"}
+      >
         {data.items.map((product, key) => {
           return <BasketItem product={product} key={key} />;
         })}
-      </div>
-      <div className={styles.basket_checkout}>
-        <h1>Sipariş Özeti</h1>
-        <div className={styles.checkout_content}>
-          <div>
-            <p>Ürün Toplamı</p>
-            <span>{data.prices.product} TL</span>
-          </div>
-          <div>
-            <p>İndirimler</p>
-            <span>{data.prices.discount} TL</span>
-          </div>
-          <div>
-            <p>Kargo</p>
-            <span>{data.prices.cargo} TL</span>
-          </div>
+      </Flex>
+      <Card
+        direction={"column"}
+        justifyContent={"flex-start"}
+        alignItems={"flex-start"}
+        w={"400px"}
+        p={"20px"}
+        borderRadius={"16px"}
+      >
+        <Text as={"h1"} fontSize={24} fontWeight={700}>
+          Sipariş Özeti
+        </Text>
+        <Flex
+          direction={"column"}
+          justifyContent={"flex-start"}
+          alignItems={"flex-start"}
+          w={"100%"}
+          h={"100%"}
+          gap={"10px"}
+          py={"15px"}
+        >
+          {data.prices.map((price, index) => {
+            return (
+              <Flex
+                key={index}
+                justifyContent={"space-between"}
+                alignItems={"center"}
+                w={"100%"}
+              >
+                <Text fontSize={14} fontWeight={700}>
+                  {price.name}
+                </Text>
+                <Text fontSize={14} fontWeight={500}>
+                  {price.price} TL
+                </Text>
+              </Flex>
+            );
+          })}
+          <Divider />
+          <Flex
+            justifyContent={"space-between"}
+            alignItems={"center"}
+            w={"100%"}
+          >
+            <Text fontSize={14} fontWeight={700}>
+              Toplam
+            </Text>
+            <Text fontSize={14} fontWeight={500}>
+              {data.total} TL
+            </Text>
+          </Flex>
+        </Flex>
 
-          <div className={styles.checkout_total}>
-            <p>Toplam</p>
-            <span>{data.prices.total} TL</span>
-          </div>
-        </div>
-
-        <Link href="/hesap-odeme">Sepeti Onayla</Link>
-      </div>
-    </div>
+        <Link
+          href="/hesap-odeme"
+          fontSize={16}
+          fontWeight={600}
+          bgColor={"orange"}
+          color={"#fff"}
+          p={"16px"}
+          borderRadius={"8px"}
+          w={"100%"}
+          textAlign={"center"}
+          border={"1px solid orange"}
+          _hover={{ bgColor: "white", color: "orange", borderColor: "orange" }}
+        >
+          Sepeti Onayla
+        </Link>
+      </Card>
+    </Flex>
   );
 }
