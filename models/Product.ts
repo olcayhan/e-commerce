@@ -12,3 +12,19 @@ export type ProductType = {
   category: string;
   brand?: string;
 };
+
+export interface ProductItemType {
+  url: string;
+  images: StaticImageData[];
+  producer: string;
+  productTitle: string;
+  productDetail: string;
+  price: number;
+  rate: number;
+  rateCount: number;
+  color: string;
+  otherColors: any[];
+  comments: any[];
+  tags: string[];
+  categories: string[];
+}

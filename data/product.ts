@@ -1,8 +1,8 @@
-import { ProductType } from "@/models/Product";
+import { ProductItemType, ProductType } from "@/models/Product";
 import android from "@assets/images/android.webp";
 import apple from "@assets/images/apple.webp";
 
-export const product = [
+export const product: ProductItemType[] = [
   {
     url: "samsung-galaxy-a34-256gb-siyah",
     images: [android, apple, android, apple],
@@ -159,7 +159,6 @@ export const product = [
     tags: [],
     categories: [""],
   },
-
 ];
 
 export const products: ProductType[] = [
