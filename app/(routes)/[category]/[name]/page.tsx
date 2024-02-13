@@ -123,7 +123,7 @@ export default function page() {
     { name: params.name, href: `/${params.category}/${params.name}` },
   ];
 
-  if (products.filter((item) => item.category === params.name)) {
+  if (products.filter((item) => item.category === params.name).length === 0) {
     return <NotFound />;
   }
 
