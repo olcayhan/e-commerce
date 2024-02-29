@@ -54,7 +54,12 @@ export default function page() {
   const deleteQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      params.delete(name, value);
+      const queries = params.getAll(name);
+      params.delete(name);
+      
+      if (queries.length > 1)
+        queries.filter((q) => q !== value).map((q) => params.append(name, q));
+
       return params.toString();
     },
     [searchParams]
