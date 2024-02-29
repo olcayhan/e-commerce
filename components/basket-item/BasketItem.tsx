@@ -1,19 +1,18 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import trash from "@assets/svg/trash.svg";
 import { Box, Button, Card, Flex, Input, Text } from "@chakra-ui/react";
 import useBasket from "@/utils/useBasket";
 
 export default function BasketItem({ product }: any) {
+  const basket = useBasket();
 
-
-  
   const deleteItem = () => {};
-  const incrementItem = useCallback(() => {
-    useBasket().addToBasket(product);
-  }, [product.count]);
+  const incrementItem = () => {
+    basket.addToBasket(product);
+  };
   const decrementItem = () => {};
   const changeItem = () => {};
 

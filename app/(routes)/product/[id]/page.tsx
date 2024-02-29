@@ -15,6 +15,7 @@ export default function page() {
   const params = useParams();
   const { id } = params;
   let data = product.find((item) => item.url === id);
+  const basket = useBasket();
 
   if (data == undefined) {
     return <NotFound />;
@@ -160,7 +161,7 @@ export default function page() {
             borderRadius={"16px"}
             bgColor={"orange"}
             onClick={() => {
-              useBasket().addToBasket(data)
+              basket.addToBasket(data);
             }}
           >
             Sepete Ekle

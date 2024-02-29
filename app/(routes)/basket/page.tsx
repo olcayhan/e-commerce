@@ -6,6 +6,7 @@ import { Card, Divider, Flex, Link, Text } from "@chakra-ui/react";
 import useBasket from "@/utils/useBasket";
 
 export default function page() {
+  const basket = useBasket();
   return (
     <Flex
       justifyContent={"center"}
@@ -21,7 +22,7 @@ export default function page() {
         gap={"20px"}
         borderRadius={"16px"}
       >
-        {useBasket().basket.map((product: any, key: any) => {
+        {basket.items.map((product: any, key: any) => {
           return <BasketItem product={product} key={key} />;
         })}
       </Flex>

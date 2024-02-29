@@ -1,37 +1,47 @@
-const useBasket = () => {
-  
-  const getBasket = () => {
-    const basket = localStorage.getItem("basket");
-    return basket ? JSON.parse(basket) : [];
-  };
+import { ProductItemType } from "@/models/Product";
+import { useEffect, useState } from "react";
+
+export default function useBasket() {
+  const [items, setItems] = useState<any[]>([]);
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem("basket");
+    if (storedItems) {
+      setItems(JSON.parse(storedItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(items));
+  }, [items]);
 
   const setBasket = (basket: any) => {
     localStorage.setItem("basket", JSON.stringify(basket));
   };
 
   const addToBasket = (product: any) => {
-    const basket = getBasket();
-    if (basket.find((item: any) => item.productTitle === product.productTitle))
-      basket.forEach((item: any) => {
-        if (item.productTitle === product.productTitle) item.count++;
+    if (items.some((item) => item.url === product.url)) {
+      const updatedItems = items.map((item) => {
+        if (item.url === product.url) {
+          return { ...item, count: item.count + 1 };
+        }
+        return item;
       });
-    else basket.push({ ...product, count: 1 });
-
-    setBasket(basket);
+      setItems(updatedItems);
+    } else {
+      setItems([...items, { ...product, count: 1 }]);
+    }
   };
 
   const removeFromBasket = (product: any) => {
-    const basket = getBasket();
-    const newBasket = basket.filter((item: any) => item.id !== product.id);
+    const newBasket = items.filter((item: any) => item.id !== product.id);
     setBasket(newBasket);
   };
 
   return {
-    getBasket,
+    items,
     setBasket,
     addToBasket,
     removeFromBasket,
   };
-};
-
-export default useBasket;
+}
