@@ -8,6 +8,7 @@ import CommentItem from "@/components/details/comment/CommentItem";
 import NotFound from "@/app/not-found";
 import { Box, Button, Flex, Icon, Link, Text } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import useBasket from "@/utils/useBasket";
 
 export default function page() {
   const [counter, setCount] = useState(0);
@@ -80,6 +81,7 @@ export default function page() {
               h={"40px"}
               borderRadius={"50%"}
               onClick={() => {
+                if (data === undefined) return null;
                 counter < data.images.length - 1 && setCount(counter + 1);
               }}
             >
@@ -157,6 +159,9 @@ export default function page() {
             color={"#fff"}
             borderRadius={"16px"}
             bgColor={"orange"}
+            onClick={() => {
+              useBasket().addToBasket(data)
+            }}
           >
             Sepete Ekle
           </Button>

@@ -1,15 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import trash from "@assets/svg/trash.svg";
 import { Box, Button, Card, Flex, Input, Text } from "@chakra-ui/react";
+import useBasket from "@/utils/useBasket";
 
 export default function BasketItem({ product }: any) {
-  const [count, setCount] = useState(1);
 
+
+  
   const deleteItem = () => {};
-  const incrementItem = () => {};
+  const incrementItem = useCallback(() => {
+    useBasket().addToBasket(product);
+  }, [product.count]);
   const decrementItem = () => {};
   const changeItem = () => {};
 
@@ -25,13 +29,13 @@ export default function BasketItem({ product }: any) {
     >
       <Flex justifyContent={"flex-start"} alignItems={"center"} gap={"10px"}>
         <Box w={"150px"} h={"150px"} position={"relative"}>
-          <Image src={product.image} alt="product-image" fill />
+          <Image src={product.images[0]} alt="product-image" fill />
         </Box>
         <Text fontSize={"13px"} fontWeight={500} maxW={"500px"}>
           <Text as={"span"} fontWeight={700} px={3}>
-            {product.producerTitle}
+            {product.producer}
           </Text>
-          {product.title}
+          {product.productTitle}
         </Text>
       </Flex>
 
@@ -54,13 +58,13 @@ export default function BasketItem({ product }: any) {
           </Button>
           <Input
             type="text"
-            value={count}
+            value={product.count}
             pattern="[0-9]*"
             onChange={changeItem}
             textAlign={"center"}
           />
           <Button
-            onClick={decrementItem}
+            onClick={incrementItem}
             borderRadius={"50%"}
             w={"50px"}
             bgColor={"orange"}

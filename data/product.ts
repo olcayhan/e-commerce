@@ -17,12 +17,12 @@ export const product: ProductItemType[] = [
     otherColors: [
       {
         color: "Siyah",
-        href: "/siyah",
+        href: "http://localhost:3000/product/samsung-galaxy-a34-256gb-siyah",
         image: android,
       },
       {
         color: "Beyaz",
-        href: "/beyaz",
+        href: "http://localhost:3000/product/samsung-galaxy-a34-256gb-beyaz",
         image: android,
       },
     ],

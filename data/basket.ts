@@ -5,18 +5,4 @@ export const data = {
     { name: "İndirimler", price: 0 },
   ],
   total: 240,
-  items: [
-    {
-      title: "Antiperspirant Whitening Roll-on - 75 ml",
-      producerTitle: "Rise & Shine",
-      price: 120,
-      image: "",
-    },
-    {
-      title: "Antiperspirant Whitening Roll-on - 75 ml",
-      producerTitle: "Rise & Shine",
-      price: 120,
-      image: "",
-    },
-  ],
 };

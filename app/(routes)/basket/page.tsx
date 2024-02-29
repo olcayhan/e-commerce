@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import { data } from "@/data/basket";
 import BasketItem from "@/components/basket-item/BasketItem";
 import { Card, Divider, Flex, Link, Text } from "@chakra-ui/react";
+import useBasket from "@/utils/useBasket";
 
 export default function page() {
   return (
@@ -19,7 +21,7 @@ export default function page() {
         gap={"20px"}
         borderRadius={"16px"}
       >
-        {data.items.map((product, key) => {
+        {useBasket().basket.map((product: any, key: any) => {
           return <BasketItem product={product} key={key} />;
         })}
       </Flex>
