@@ -1,12 +1,10 @@
 "use client";
 import React from "react";
-import { data } from "@/data/basket";
+import { basket } from "@/data/basket";
 import BasketItem from "@/components/basket-item/BasketItem";
 import { Card, Divider, Flex, Link, Text } from "@chakra-ui/react";
-import useBasket from "@/utils/useBasket";
 
 export default function page() {
-  const basket = useBasket();
   return (
     <Flex
       justifyContent={"center"}
@@ -46,7 +44,7 @@ export default function page() {
           gap={"10px"}
           py={"15px"}
         >
-          {data.prices.map((price, index) => {
+          {basket.prices.map((price, index) => {
             return (
               <Flex
                 key={index}
@@ -73,7 +71,7 @@ export default function page() {
               Toplam
             </Text>
             <Text fontSize={14} fontWeight={500}>
-              {data.total} TL
+              {basket.total} TL
             </Text>
           </Flex>
         </Flex>

@@ -8,14 +8,12 @@ import CommentItem from "@/components/details/comment/CommentItem";
 import NotFound from "@/app/not-found";
 import { Box, Button, Flex, Icon, Link, Text } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import useBasket from "@/utils/useBasket";
 
 export default function page() {
   const [counter, setCount] = useState(0);
   const params = useParams();
   const { id } = params;
   let data = product.find((item) => item.url === id);
-  const basket = useBasket();
 
   if (data == undefined) {
     return <NotFound />;
@@ -160,9 +158,7 @@ export default function page() {
             color={"#fff"}
             borderRadius={"16px"}
             bgColor={"orange"}
-            onClick={() => {
-              basket.addToBasket(data);
-            }}
+            onClick={() => {}}
           >
             Sepete Ekle
           </Button>

@@ -4,15 +4,11 @@ import React from "react";
 import Image from "next/image";
 import trash from "@assets/svg/trash.svg";
 import { Box, Button, Card, Flex, Input, Text } from "@chakra-ui/react";
-import useBasket from "@/utils/useBasket";
 
 export default function BasketItem({ product }: any) {
-  const basket = useBasket();
 
   const deleteItem = () => {};
-  const incrementItem = () => {
-    basket.addToBasket(product);
-  };
+  const incrementItem = () => {};
   const decrementItem = () => {};
   const changeItem = () => {};
 
@@ -28,7 +24,7 @@ export default function BasketItem({ product }: any) {
     >
       <Flex justifyContent={"flex-start"} alignItems={"center"} gap={"10px"}>
         <Box w={"150px"} h={"150px"} position={"relative"}>
-          <Image src={product.images[0]} alt="product-image" fill />
+          <Image src={product.image} alt="product-image" fill />
         </Box>
         <Text fontSize={"13px"} fontWeight={500} maxW={"500px"}>
           <Text as={"span"} fontWeight={700} px={3}>
@@ -47,7 +43,7 @@ export default function BasketItem({ product }: any) {
           gap={"5px"}
         >
           <Button
-            onClick={incrementItem}
+            onClick={decrementItem}
             w={"50px"}
             borderRadius={"50%"}
             bgColor={"orange"}
