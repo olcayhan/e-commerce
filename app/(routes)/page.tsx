@@ -38,7 +38,7 @@ export default function page() {
       justifyContent={"flex-start"}
       alignItems={"center"}
       gap={"30px"}
-      padding={"50px"}
+      padding={{ base: 0, md: "50px" }}
     >
       <Carousel />
       {details.map((item, key) => {

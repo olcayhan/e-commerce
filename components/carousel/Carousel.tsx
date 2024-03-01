@@ -32,15 +32,16 @@ export default function Carousel() {
     <Flex
       direction={"column"}
       bgColor={caruselData[tabIndex].bgColor}
-      w={"99vw"}
+      w={"100%"}
       h={"600px"}
       justifyContent={"space-evenly"}
       alignItems={"center"}
     >
-      <Flex justifyContent={"center"} gap={10}>
+      <Flex justifyContent={"center"} alignItems={"center"} w={"100%"} gap={10}>
         {caruselData.map((data, index) => {
           return (
             <Button
+              fontSize={{ base: "12px", md: "16px", lg: "20px" }}
               color={"white"}
               bgColor={tabIndex == index ? "#2B3499" : "transparent"}
               borderRadius={"16px"}
@@ -59,8 +60,8 @@ export default function Carousel() {
       </Flex>
 
       <Link
-        w={"60%"}
-        h={"450px"}
+        w={{ base: "90%", md: "80%" }}
+        h={"400px"}
         position={"relative"}
         borderRadius={"36px"}
         overflow={"hidden"}
@@ -73,10 +74,16 @@ export default function Carousel() {
         />
       </Link>
 
-      <Flex justifyContent={"center"} alignItems={"center"} h={16} gap={4}>
+      <Flex
+        justifyContent={"center"}
+        alignItems={"center"}
+        w={"100%"}
+        h={14}
+        gap={4}
+      >
         <Button
-          w={12}
-          h={12}
+          w={{ base: 8, lg: 12 }}
+          h={{ base: 8, lg: 12 }}
           borderRadius={"50%"}
           onClick={() => {
             if (selectedImage > 0) {
@@ -91,13 +98,17 @@ export default function Carousel() {
             }
           }}
         >
-          <Icon as={ChevronLeftIcon} w={8} h={8} />
+          <Icon
+            as={ChevronLeftIcon}
+            w={{ base: 6, lg: 8 }}
+            h={{ base: 6, lg: 8 }}
+          />
         </Button>
 
         {caruselData[tabIndex].images.map((data, index) => {
           return (
             <Button
-              w={32}
+              w={{ base: 16, md: 24, lg: 32 }}
               h={"100%"}
               borderRadius={"10px"}
               position={"relative"}
@@ -111,8 +122,8 @@ export default function Carousel() {
         })}
 
         <Button
-          w={12}
-          h={12}
+          w={{ base: 8, lg: 12 }}
+          h={{ base: 8, lg: 12 }}
           borderRadius={"50%"}
           onClick={() => {
             if (caruselData[tabIndex].images.length - 1 > selectedImage) {
@@ -127,7 +138,11 @@ export default function Carousel() {
             }
           }}
         >
-          <Icon as={ChevronRightIcon} w={8} h={8} />
+          <Icon
+            as={ChevronRightIcon}
+            w={{ base: 6, lg: 8 }}
+            h={{ base: 6, lg: 8 }}
+          />
         </Button>
       </Flex>
     </Flex>
