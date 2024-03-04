@@ -37,7 +37,7 @@ export default function page() {
       direction={"column"}
       justifyContent={"flex-start"}
       alignItems={"center"}
-      gap={"30px"}
+      gap={{ base: 0, md: "30px" }}
       padding={{ base: 0, md: "50px" }}
     >
       <Carousel />

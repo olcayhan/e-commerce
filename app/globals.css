@@ -5,8 +5,10 @@
   text-decoration: none;
 }
 
+
 main {
   max-width: 1440px;
   min-height: 100vh;
   margin: 0 auto;
+  margin-bottom: 100px;
 }

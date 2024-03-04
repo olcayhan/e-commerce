@@ -43,16 +43,16 @@ export default function Banner({ item }: Prop) {
       {isLoading ? (
         <SkeletonText noOfLines={1} skeletonHeight="14" w={96} />
       ) : (
-        <Text fontSize={{ md: "38px", lg: "50px" }} fontWeight={"extrabold"}>
+        <Text fontSize={{ base: "24px", md: "50px" }} fontWeight={"extrabold"}>
           {item.title}
         </Text>
       )}
       <Flex
         width={"100%"}
-        direction={"row"}
+        direction={{ base: "column-reverse", xl: "row" }}
         justifyContent={"flex-start"}
         alignItems={"center"}
-        gap={"40px"}
+        gap={{ base: 2, md: "20px" }}
       >
         {isLoading ? (
           <Box>
@@ -60,32 +60,34 @@ export default function Banner({ item }: Prop) {
           </Box>
         ) : (
           <Flex
-            direction={"column"}
-            justifyContent={"flex-start"}
+            direction={{ base: "row", xl: "column" }}
+            justifyContent={{ base: "center", xl: "flex-start" }}
             alignItems={"center"}
             bgColor={"bisque"}
-            w={"400px"}
-            h={"400px"}
+            w={{ base: "100%", xl: "400px" }}
             flexShrink={0}
             borderRadius={"16px"}
-            gap={"20px"}
-            padding={"20px"}
+            gap={{ base: 4, md: "20px" }}
+            padding={{ base: 0, md: "20px" }}
           >
-            <Image
-              src={item.detail_img}
-              alt={item.detail_title}
+            <Box
               width={400}
               height={300}
-            />
-            <Text fontSize={{ md: "16px", lg: "24px" }} fontWeight={600}>
+              position={"relative"}
+              display={{ base: "none", xl: "block" }}
+            >
+              <Image src={item.detail_img} alt={item.detail_title} fill />
+            </Box>
+            <Text fontSize={{ base: "12px", md: "24px" }} fontWeight={600}>
               {item.detail_title}
             </Text>
             <Link
               _hover={{ textDecoration: "none", backgroundColor: "gray.100" }}
               href={item.href}
-              fontSize={{ md: "12px", lg: "18px" }}
+              fontSize={{ base: "10px", md: "18px" }}
               fontWeight={600}
               bgColor={"orange"}
+              color={"white"}
               p={4}
               px={8}
               borderRadius={"16px"}
@@ -97,14 +99,15 @@ export default function Banner({ item }: Prop) {
         )}
         <Flex
           position={"relative"}
-          width={"750px"}
+          width={{ base: "100%", md: "750px" }}
           h={"100%"}
           direction={"row"}
           justifyContent={"flex-start"}
           alignItems={"center"}
-          overflow={"hidden"}
+          overflow={{ base: "scroll", md: "hidden" }}
         >
           <Button
+            visibility={{ base: "hidden", md: "visible" }}
             bgColor={"bisque"}
             position={"absolute"}
             left={0}
@@ -130,6 +133,7 @@ export default function Banner({ item }: Prop) {
             })}
           </Flex>
           <Button
+            visibility={{ base: "hidden", md: "visible" }}
             bgColor={"bisque"}
             position={"absolute"}
             right={0}

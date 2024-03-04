@@ -28,11 +28,11 @@ export default function Product({ item }: Prop) {
   return (
     <Link
       href={item.url}
-      w={"250px"}
+      w={{ base: "150px", md: "250px" }}
       h={"auto"}
       _hover={{ textDecoration: "none" }}
     >
-      <Card h={"400px"} w={"100%"} gap={3} py={2}>
+      <Card h={{ md: "400px" }} w={"100%"} gap={3} py={2}>
         <CardBody py={0}>
           {isLoading ? (
             <Box>
@@ -50,27 +50,53 @@ export default function Product({ item }: Prop) {
               gap={3}
             >
               {item.image && (
-                <Image src={item.image} alt={item.url} width={300} />
+                <Box
+                  w={{ base: "100px", md: "200px" }}
+                  h={{ base: "75px", md: "150px" }}
+                  position={"relative"}
+                >
+                  <Image src={item.image} alt={item.url} fill />
+                </Box>
               )}
-              <Text fontSize={{ md: "12px", lg: "16px" }} fontWeight="bold">
+              <Text fontSize={{ base: "10px", md: "16px" }} fontWeight="bold">
                 {item.title}
               </Text>
 
               <Box>
                 <Flex direction={"row"} gap={2} alignItems={"center"}>
-                  <Icon as={StarIcon} w={4} h={4} />
-                  <Icon as={StarIcon} w={4} h={4} />
-                  <Icon as={StarIcon} w={4} h={4} />
-                  <Icon as={StarIcon} w={4} h={4} />
-                  <Icon as={StarIcon} w={4} h={4} />
-                  <Text fontSize={{ md: "12px", lg: "16px" }}>
+                  <Icon
+                    as={StarIcon}
+                    w={{ base: 2, md: 4 }}
+                    h={{ base: 2, md: 4 }}
+                  />
+                  <Icon
+                    as={StarIcon}
+                    w={{ base: 2, md: 4 }}
+                    h={{ base: 2, md: 4 }}
+                  />
+                  <Icon
+                    as={StarIcon}
+                    w={{ base: 2, md: 4 }}
+                    h={{ base: 2, md: 4 }}
+                  />
+                  <Icon
+                    as={StarIcon}
+                    w={{ base: 2, md: 4 }}
+                    h={{ base: 2, md: 4 }}
+                  />
+                  <Icon
+                    as={StarIcon}
+                    w={{ base: 2, md: 4 }}
+                    h={{ base: 2, md: 4 }}
+                  />
+                  <Text fontSize={{ base: "8px", md: "16px" }}>
                     ({item.rateCount})
                   </Text>
                 </Flex>
               </Box>
               <Text
-                fontSize={{ md: "16px", lg: "20px" }}
-                mt={6}
+                fontSize={{ base: "12px", md: "20px" }}
+                mt={{ base: 0, md: 6 }}
                 fontWeight="extrabold"
               >
                 {item.price} TL
@@ -83,13 +109,15 @@ export default function Product({ item }: Prop) {
             isLoading={isLoading}
             bgColor={"orange"}
             color={"#fff"}
-            size={"lg"}
+            size={{ base: "sm", md: "lg" }}
             w={"100%"}
             onClick={(e) => {
               e.preventDefault();
             }}
           >
-            Sepete Ekle
+            <Text fontSize={{ base: "10px", md: "20px" }} fontWeight={600}>
+              Sepete Ekle
+            </Text>
           </Button>
         </CardFooter>
       </Card>
