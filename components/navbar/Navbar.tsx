@@ -2,7 +2,20 @@
 
 import React, { useState } from "react";
 import { data } from "@/data/navbar";
-import { Flex, Icon, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Flex,
+  Icon,
+  IconButton,
+  Link,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
 
@@ -34,73 +47,27 @@ export default function Navbar() {
         gap={3}
         p={4}
       >
-        {data.map((item, key) => {
-          return (
-            <Flex
-              direction={"column"}
-              alignItems={"flex-start"}
-              justifyContent={"flex-start"}
-              w={"100%"}
-              key={key}
-              h={"40px"}
-            >
-              <Flex
-                alignItems={"flex-start"}
-                justifyContent={"space-between"}
-                w={"100%"}
-                key={key}
-                h={"40px"}
-              >
-                <Link
-                  href={item.href}
-                  fontSize={{ md: 14, lg: 16 }}
-                  fontWeight={600}
-                  _hover={{ textDecoration: "none", color: "orange" }}
-                >
-                  {item.title}
-                </Link>
-                <Icon
-                  as={ChevronDownIcon}
-                  w={5}
-                  h={5}
-                  _groupHover={{ transform: "rotate(180deg)" }}
-                  transition={"all 0.3s ease"}
-                />
-              </Flex>
-              {/* <Flex
-                display={"none"}
-                position={"absolute"}
-                top={"40px"}
-                w={"300px"}
-                direction={"column"}
-                alignItems={"flex-start"}
-                justifyContent={"flex-start"}
-                gap={2}
-                _groupHover={{ display: "flex" }}
-                bgColor={"bisque"}
-                zIndex={4}
-                borderRadius={"16px"}
-                p={3}
-              >
-                {item.subtitles?.map((sub, key) => {
+        <Accordion allowToggle w={"100%"}>
+          {data.map((item, key) => {
+            return (
+              <AccordionItem key={key}>
+                <AccordionButton>
+                  <Box as="span" flex="1" textAlign="left">
+                    {item.title}
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+                {item.subtitles.map((sub, key) => {
                   return (
-                    <Link
-                      href={sub.url}
-                      key={key}
-                      fontSize={"14px"}
-                      fontWeight={600}
-                      _hover={{ textDecoration: "none", bgColor: "gray.300" }}
-                      p={2}
-                      borderRadius={"16px"}
-                    >
-                      {sub.title}
-                    </Link>
+                    <AccordionPanel key={key}>
+                      <Link href={sub.url}>{sub.title}</Link>
+                    </AccordionPanel>
                   );
                 })}
-              </Flex> */}
-            </Flex>
-          );
-        })}
+              </AccordionItem>
+            );
+          })}
+        </Accordion>
       </Flex>
 
       <SimpleGrid
