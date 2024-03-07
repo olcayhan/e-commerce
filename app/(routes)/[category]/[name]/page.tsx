@@ -337,7 +337,6 @@ export default function page() {
           </Flex>
           <Flex
             direction={"row"}
-            maxH={"80px"}
             justifyContent={"flex-start"}
             alignItems={"center"}
             gap={3}
@@ -348,6 +347,7 @@ export default function page() {
                   <Button
                     key={index}
                     leftIcon={<Icon as={CloseIcon} w={2} h={2} />}
+                    fontSize={{ base: 10, md: 12 }}
                     bgColor={"orange"}
                     onClick={() => {
                       router.push(
