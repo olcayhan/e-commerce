@@ -34,6 +34,7 @@ export default function page() {
   const searchParams = useSearchParams();
   const params = useParams();
   const [isOpenMobileOrder, setMobileOrder] = useState(false);
+  const [isOpenMobileFilter, setMobileFilter] = useState(false);
 
   const setQueryString = useCallback(
     (name: string, value: string) => {
@@ -151,13 +152,29 @@ export default function page() {
       </Breadcrumb>
       <Flex direction={"row"} gap={6}>
         <Box
-          display={{ base: "none", md: "block" }}
-          position={"relative"}
+          display={{ base: isOpenMobileFilter ? "block" : "none", md: "block" }}
+          position={{ base: "absolute", md: "relative" }}
+          zIndex={99}
+          bgColor={{ base: "white", md: "transparent" }}
+          top={0}
           flexShrink={0}
-          w={"300px"}
+          w={{ base: "100%", md: "300px" }}
           h={"auto"}
+          py={{ base: 16, md: 0 }}
           border={"1px solid #e0e0e0"}
         >
+          <IconButton
+            aria-label="Close Order"
+            icon={<CloseIcon />}
+            position={"absolute"}
+            display={{ md: "none" }}
+            top={5}
+            right={5}
+            zIndex={100}
+            borderRadius={"50%"}
+            fontSize={12}
+            onClick={() => setMobileFilter(false)}
+          />
           <Accordion
             position={"sticky"}
             h={"100vh"}
@@ -238,7 +255,7 @@ export default function page() {
               gap={6}
               p={{ base: 6, md: 0 }}
               position={{ base: "absolute", md: "relative" }}
-              h={{ base: "100vh", md: "80px" }}
+              h={{ base: "100%", md: "80px" }}
               w={{ base: "100%", md: "auto" }}
               top={0}
               zIndex={99}
@@ -306,7 +323,14 @@ export default function page() {
               >
                 Sırala
               </Button>
-              <Button w={"150px"} bgColor={"orange.300"} color={"white"}>
+              <Button
+                w={"150px"}
+                bgColor={"orange.300"}
+                color={"white"}
+                onClick={() => {
+                  setMobileFilter(true);
+                }}
+              >
                 Filtrele
               </Button>
             </Flex>
