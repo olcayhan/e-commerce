@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import Product from "@/components/product/Product";
 import { products } from "@/data/product";
 import {
@@ -23,6 +23,7 @@ import {
   Checkbox,
   Flex,
   Icon,
+  IconButton,
 } from "@chakra-ui/react";
 import { ChevronRightIcon, CloseIcon } from "@chakra-ui/icons";
 import NotFound from "@/app/not-found";
@@ -32,6 +33,7 @@ export default function page() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const params = useParams();
+  const [isOpenMobileOrder, setMobileOrder] = useState(false);
 
   const setQueryString = useCallback(
     (name: string, value: string) => {
@@ -56,7 +58,7 @@ export default function page() {
       const params = new URLSearchParams(searchParams.toString());
       const queries = params.getAll(name);
       params.delete(name);
-      
+
       if (queries.length > 1)
         queries.filter((q) => q !== value).map((q) => params.append(name, q));
 
@@ -149,6 +151,7 @@ export default function page() {
       </Breadcrumb>
       <Flex direction={"row"} gap={6}>
         <Box
+          display={{ base: "none", md: "block" }}
           position={"relative"}
           flexShrink={0}
           w={"300px"}
@@ -218,43 +221,95 @@ export default function page() {
 
         <Flex direction={"column"} w={"100%"} gap={3}>
           <Flex
-            direction={"row"}
-            h={"80px"}
+            direction={{ base: "column", md: "row" }}
+            h={{ base: "100%", md: "80px" }}
             justifyContent={"flex-start"}
             alignItems={"center"}
             gap={3}
           >
-            {sorts.map((sort, index) => {
-              return (
-                <Button
-                  key={index}
-                  border={"1px solid #e0e0e0"}
-                  p={2}
-                  borderRadius={"24px"}
-                  _hover={{ borderColor: "orange" }}
-                  fontSize={"14px"}
-                  bgColor={
-                    searchParams.get("sortQuery") === sort.value
-                      ? "orange"
-                      : "white"
-                  }
-                  color={
-                    searchParams.get("sortQuery") === sort.value
-                      ? "white"
-                      : "black"
-                  }
-                  onClick={() => {
-                    router.push(
-                      pathname +
-                        "?" +
-                        setQueryString(sort.queryString, sort.value)
-                    );
-                  }}
-                >
-                  {sort.name}
-                </Button>
-              );
-            })}
+            <Box
+              display={{
+                base: isOpenMobileOrder ? "flex" : "none",
+                md: "flex",
+              }}
+              flexDirection={isOpenMobileOrder ? "column" : "row"}
+              alignItems={"center"}
+              justifyContent={"flex-start"}
+              gap={6}
+              p={{ base: 6, md: 0 }}
+              position={{ base: "absolute", md: "relative" }}
+              h={{ base: "100vh", md: "80px" }}
+              w={{ base: "100%", md: "auto" }}
+              top={0}
+              zIndex={99}
+              bgColor={{ base: "white", md: "transparent" }}
+            >
+              <IconButton
+                aria-label="Close Order"
+                icon={<CloseIcon />}
+                position={"absolute"}
+                display={{ md: "none" }}
+                top={5}
+                right={5}
+                zIndex={100}
+                borderRadius={"50%"}
+                fontSize={12}
+                onClick={() => setMobileOrder(false)}
+              />
+
+              {sorts.map((sort, index) => {
+                return (
+                  <Button
+                    key={index}
+                    border={"1px solid #e0e0e0"}
+                    p={2}
+                    borderRadius={"24px"}
+                    _hover={{ borderColor: "orange" }}
+                    fontSize={"14px"}
+                    bgColor={
+                      searchParams.get("sortQuery") === sort.value
+                        ? "orange"
+                        : "white"
+                    }
+                    color={
+                      searchParams.get("sortQuery") === sort.value
+                        ? "white"
+                        : "black"
+                    }
+                    onClick={() => {
+                      router.push(
+                        pathname +
+                          "?" +
+                          setQueryString(sort.queryString, sort.value)
+                      );
+                    }}
+                  >
+                    {sort.name}
+                  </Button>
+                );
+              })}
+            </Box>
+            <Flex
+              display={{ base: "flex", md: "none" }}
+              alignItems={"center"}
+              justifyContent={"center"}
+              gap={3}
+              w={"100%"}
+            >
+              <Button
+                w={"150px"}
+                bgColor={"orange.300"}
+                color={"white"}
+                onClick={() => {
+                  setMobileOrder(true);
+                }}
+              >
+                Sırala
+              </Button>
+              <Button w={"150px"} bgColor={"orange.300"} color={"white"}>
+                Filtrele
+              </Button>
+            </Flex>
           </Flex>
           <Flex
             direction={"row"}
