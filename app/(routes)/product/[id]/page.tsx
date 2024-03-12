@@ -28,7 +28,7 @@ export default function page() {
       padding={"50px"}
     >
       <Flex
-        direction={"row"}
+        direction={{ base: "column", md: "row" }}
         justifyContent={"center"}
         alignItems={"center"}
         gap={"30px"}
@@ -40,7 +40,7 @@ export default function page() {
           alignItems={"center"}
           gap={"20px"}
         >
-          <Box w={"100%"} h={"50vh"} position={"relative"}>
+          <Box w={"300px"} h={"300px"} position={"relative"}>
             <Image src={data.images[counter]} alt={"image" + counter} fill />
           </Box>
           <Flex alignItems={"center"} justifyContent={"center"} gap={"20px"}>
@@ -68,6 +68,7 @@ export default function page() {
                   borderColor={counter === key ? "orange" : "#ddd"}
                   h={"50px"}
                   w={"100px"}
+                  display={{ base: "none", md: "block" }}
                 >
                   <Image src={image} alt={key.toString()} fill />
                 </Button>
@@ -98,26 +99,26 @@ export default function page() {
           borderRadius={"16px"}
         >
           <Text
-            fontSize={"20px"}
+            fontSize={{ base: 16, md: 20 }}
             fontWeight={700}
             opacity={0.9}
             color={"orange"}
           >
             {data.producer}
           </Text>
-          <Text fontSize={"18px"} fontWeight={600}>
+          <Text fontSize={{ base: 14, md: 18 }} fontWeight={600}>
             {data.productTitle}
           </Text>
-          <Text fontSize={"24px"} fontWeight={600} pt={"10px"}>
+          <Text fontSize={{ base: 18, md: 20 }} fontWeight={700} pt={"10px"}>
             {data.price} TL
           </Text>
-          <Text fontSize={"16px"} fontWeight={500} opacity={0.9}>
+          <Text fontSize={{ base: 14, md: 16 }} fontWeight={500} opacity={0.9}>
             {data.productDetail}
           </Text>
           {data.color && (
-            <Text fontSize={"16px"} fontWeight={700}>
+            <Text fontSize={{ base: 14, md: 16 }} fontWeight={700}>
               Renk:
-              <Text as={"span"} fontWeight={500} px={"5px"}>
+              <Text as={"span"} fontWeight={500} px={5}>
                 {data.color}
               </Text>
             </Text>
