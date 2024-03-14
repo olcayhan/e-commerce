@@ -16,5 +16,21 @@ export const basket = {
       price: 2999.99,
       count: 1,
     },
+    {
+      url: "samsung-galaxy-a34-256gb-siyah",
+      image: android,
+      producer: "Samsung",
+      productTitle: "SAMSUNG Galaxy A34 256 GB Akıllı Telefon Siyah",
+      price: 2999.99,
+      count: 1,
+    },
+    {
+      url: "samsung-galaxy-a34-256gb-siyah",
+      image: android,
+      producer: "Samsung",
+      productTitle: "SAMSUNG Galaxy A34 256 GB Akıllı Telefon Siyah",
+      price: 2999.99,
+      count: 1,
+    },
   ],
 };

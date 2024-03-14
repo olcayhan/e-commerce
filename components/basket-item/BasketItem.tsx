@@ -2,11 +2,18 @@
 
 import React from "react";
 import Image from "next/image";
-import trash from "@assets/svg/trash.svg";
-import { Box, Button, Card, Flex, Input, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  IconButton,
+  Input,
+  Text,
+} from "@chakra-ui/react";
+import { CiTrash } from "react-icons/ci";
 
 export default function BasketItem({ product }: any) {
-
   const deleteItem = () => {};
   const incrementItem = () => {};
   const decrementItem = () => {};
@@ -16,17 +23,23 @@ export default function BasketItem({ product }: any) {
     <Card
       w={"100%"}
       display={"flex"}
-      direction={"row"}
+      direction={{ base: "column", md: "row" }}
       justifyContent={"space-between"}
       alignItems={"center"}
       p={"15px"}
-      gap={"30px"}
+      gap={{ base: "10px", md: "30px" }}
     >
       <Flex justifyContent={"flex-start"} alignItems={"center"} gap={"10px"}>
-        <Box w={"150px"} h={"150px"} position={"relative"}>
+        <Box
+          w={{ base: "75px", md: "150px" }}
+          h={{ base: "75px", md: "150px" }}
+          position={"relative"}
+          border={"1px solid black"}
+          borderRadius={4}
+        >
           <Image src={product.image} alt="product-image" fill />
         </Box>
-        <Text fontSize={"13px"} fontWeight={500} maxW={"500px"}>
+        <Text fontSize={{ base: 10, md: 14 }} fontWeight={500} maxW={"500px"}>
           <Text as={"span"} fontWeight={700} px={3}>
             {product.producer}
           </Text>
@@ -44,10 +57,10 @@ export default function BasketItem({ product }: any) {
         >
           <Button
             onClick={decrementItem}
-            w={"50px"}
             borderRadius={"50%"}
             bgColor={"orange"}
             color={"white"}
+            size={{ base: "sm", md: "md" }}
           >
             -
           </Button>
@@ -57,29 +70,29 @@ export default function BasketItem({ product }: any) {
             pattern="[0-9]*"
             onChange={changeItem}
             textAlign={"center"}
+            size={{ base: "sm", md: "md" }}
           />
           <Button
             onClick={incrementItem}
             borderRadius={"50%"}
-            w={"50px"}
             bgColor={"orange"}
             color={"white"}
+            size={{ base: "sm", md: "md" }}
           >
             +
           </Button>
         </Flex>
-        <Text fontSize={"18px"} fontWeight={700}>
+        <Text fontSize={{ base: 14, md: 18 }} fontWeight={700}>
           {product.price} TL
         </Text>
-        <Button
+        <IconButton
+          aria-label="trash-icon"
+          icon={<CiTrash />}
           onClick={deleteItem}
-          w={12}
-          h={12}
+          fontSize={{ base: 20, md: 24 }}
           borderRadius={"50%"}
-          bgColor={"orange.100"}
-        >
-          <Image src={trash} alt="trash" width={20} height={20} />
-        </Button>
+          bgColor={"orange.300"}
+        />
       </Flex>
     </Card>
   );
