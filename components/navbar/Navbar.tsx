@@ -16,19 +16,25 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
+import {
+  CiBoxList,
+  CiHome,
+  CiMenuKebab,
+  CiShoppingBasket,
+} from "react-icons/ci";
+import { IconType } from "react-icons";
 
 export default function Navbar() {
   const [isCategoryShown, setCategoryShown] = useState(false);
   const router = useRouter();
 
-  const barTitle = [
-    { title: "Keşfet", href: "/" },
-    { title: "Kategoriler", href: "/" },
-    { title: "Sepetim", href: "/basket" },
-    { title: "Listelerim", href: "/list" },
-    { title: "Diğer", href: "/other" },
+  const barTitle: { title: string; href: string; icon: IconType }[] = [
+    { title: "Keşfet", href: "/", icon: CiHome },
+    { title: "Kategoriler", href: "/", icon: CiBoxList },
+    { title: "Sepetim", href: "/basket", icon: CiShoppingBasket },
+    { title: "Diğer", href: "/other", icon: CiMenuKebab },
   ];
   return (
     <>
@@ -98,7 +104,7 @@ export default function Navbar() {
                 }
               }}
             >
-              <Icon as={BellIcon} boxSize={8} />
+              <Icon as={item.icon} boxSize={8} />
               <Text fontSize={14} fontWeight={600}>
                 {item.title}
               </Text>
