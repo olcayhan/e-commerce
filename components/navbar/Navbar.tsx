@@ -49,7 +49,7 @@ export default function Navbar() {
         h={"100%"}
         top={0}
         zIndex={99}
-        bgColor={"aliceblue"}
+        bgColor={"white"}
         gap={3}
         p={4}
       >
@@ -82,8 +82,9 @@ export default function Navbar() {
         spacing={5}
         position={"fixed"}
         h={"10vh"}
-        bgColor={"blue.200"}
+        bgColor={"white"}
         bottom={0}
+        boxShadow={"dark-lg"}
         w={"100%"}
         zIndex={100}
       >
@@ -104,8 +105,8 @@ export default function Navbar() {
                 }
               }}
             >
-              <Icon as={item.icon} boxSize={8} />
-              <Text fontSize={14} fontWeight={600}>
+              <Icon as={item.icon} boxSize={6} />
+              <Text fontSize={12} fontWeight={600}>
                 {item.title}
               </Text>
             </Flex>

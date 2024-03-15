@@ -79,6 +79,7 @@ export default function Header() {
           borderRadius={"24px"}
           _focus={{ borderColor: "orange.300" }}
           onFocus={() => setOpen(true)}
+          fontSize={{ base: 10, md: 16 }}
         />
 
         <Box
