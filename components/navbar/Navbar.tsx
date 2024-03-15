@@ -40,7 +40,7 @@ export default function Navbar() {
     <>
       {/* mobile */}
       <Flex
-        position={"absolute"}
+        position={"fixed"}
         display={isCategoryShown ? "flex" : "none"}
         flexDirection={"column"}
         justifyContent={"flex-start"}

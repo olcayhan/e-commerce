@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Button, Flex, Icon, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Icon, IconButton, Link } from "@chakra-ui/react";
 import React, { useState } from "react";
 import carousel1 from "@assets/images/carusel-1.jpg";
 import carousel2 from "@assets/images/carusel-2.jpg";
@@ -13,17 +13,36 @@ export default function Carousel() {
 
   const caruselData = [
     {
-      title: "deneme1",
+      title: "Yeni Gelenler",
       images: [carousel1, carousel2, carousel1, carousel2],
       bgColor: "green.400",
     },
     {
-      title: "deneme2",
-      images: [carousel2, carousel1, carousel2, carousel1],
+      title: "İndirimdekiler",
+      images: [
+        carousel2,
+        carousel1,
+        carousel2,
+        carousel1,
+        carousel2,
+        carousel1,
+        carousel2,
+        carousel1,
+      ],
       bgColor: "orange.500",
     },
     {
-      title: "deneme3",
+      title: "Kış Koleksiyonu",
+      images: [carousel1, carousel2],
+      bgColor: "gray.300",
+    },
+    {
+      title: "Yaz Koleksiyonu",
+      images: [carousel1, carousel2],
+      bgColor: "gray.300",
+    },
+    {
+      title: "Yaz Koleksiyonu",
       images: [carousel1, carousel2],
       bgColor: "gray.300",
     },
@@ -37,15 +56,21 @@ export default function Carousel() {
       justifyContent={"space-evenly"}
       alignItems={"center"}
     >
-      <Flex justifyContent={"center"} alignItems={"center"} w={"100%"} gap={10}>
+      <Flex
+        w={"100%"}
+        justifyContent={{ base: "flex-start", md: "center" }}
+        alignItems={"center"}
+        overflowX={"auto"}
+        gap={6}
+      >
         {caruselData.map((data, index) => {
           return (
             <Button
               fontSize={{ base: "12px", md: "16px", lg: "20px" }}
+              flexShrink={0}
               color={"white"}
               bgColor={tabIndex == index ? "#2B3499" : "transparent"}
               borderRadius={"16px"}
-              p={6}
               _hover={{ bgColor: "" }}
               _active={{ bgColor: "" }}
               onClick={() => {
@@ -80,11 +105,14 @@ export default function Carousel() {
         w={"100%"}
         h={14}
         gap={4}
+        p={2}
       >
-        <Button
-          w={{ base: 8, lg: 12 }}
-          h={{ base: 8, lg: 12 }}
-          borderRadius={"50%"}
+        <IconButton
+          aria-label="left-arrow"
+          icon={<ChevronLeftIcon />}
+          variant={"solid"}
+          fontSize={20}
+          isRound
           onClick={() => {
             if (selectedImage > 0) {
               setSelectedImage(selectedImage - 1);
@@ -97,34 +125,39 @@ export default function Carousel() {
               }
             }
           }}
+        />
+        <Flex
+          justifyContent={"center"}
+          alignItems={"center"}
+          w={"auto"}
+          h={14}
+          gap={4}
+          overflowX={"auto"}
         >
-          <Icon
-            as={ChevronLeftIcon}
-            w={{ base: 6, lg: 8 }}
-            h={{ base: 6, lg: 8 }}
-          />
-        </Button>
+          {caruselData[tabIndex].images.map((data, index) => {
+            return (
+              <Button
+                flexShrink={0}
+                w={{ base: 16, md: 24, lg: 32 }}
+                h={"100%"}
+                borderRadius={"10px"}
+                position={"relative"}
+                overflow={"hidden"}
+                onClick={() => setSelectedImage(index)}
+                border={selectedImage == index ? "1px solid #2B3499" : "none"}
+              >
+                <Image src={data} alt="asd" layout="fill" />
+              </Button>
+            );
+          })}
+        </Flex>
 
-        {caruselData[tabIndex].images.map((data, index) => {
-          return (
-            <Button
-              w={{ base: 16, md: 24, lg: 32 }}
-              h={"100%"}
-              borderRadius={"10px"}
-              position={"relative"}
-              overflow={"hidden"}
-              onClick={() => setSelectedImage(index)}
-              border={selectedImage == index ? "1px solid #2B3499" : "none"}
-            >
-              <Image src={data} alt="asd" layout="fill" />
-            </Button>
-          );
-        })}
-
-        <Button
-          w={{ base: 8, lg: 12 }}
-          h={{ base: 8, lg: 12 }}
-          borderRadius={"50%"}
+        <IconButton
+          aria-label="right-arrow"
+          icon={<ChevronRightIcon />}
+          variant={"solid"}
+          fontSize={20}
+          isRound
           onClick={() => {
             if (caruselData[tabIndex].images.length - 1 > selectedImage) {
               setSelectedImage(selectedImage + 1);
@@ -137,13 +170,7 @@ export default function Carousel() {
               }
             }
           }}
-        >
-          <Icon
-            as={ChevronRightIcon}
-            w={{ base: 6, lg: 8 }}
-            h={{ base: 6, lg: 8 }}
-          />
-        </Button>
+        />
       </Flex>
     </Flex>
   );
