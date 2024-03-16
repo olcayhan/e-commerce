@@ -138,6 +138,7 @@ export default function page() {
   return (
     <Box>
       <Breadcrumb
+        display={{ base: "none", md: "flex" }}
         py={3}
         spacing={"8px"}
         separator={<ChevronRightIcon color="orange" />}
@@ -153,14 +154,13 @@ export default function page() {
       <Flex direction={"row"} gap={6}>
         <Box
           display={{ base: isOpenMobileFilter ? "block" : "none", md: "block" }}
-          position={{ base: "absolute", md: "relative" }}
-          zIndex={99}
+          position={{ base: "fixed", md: "relative" }}
+          zIndex={101}
           bgColor={{ base: "white", md: "transparent" }}
           top={0}
           flexShrink={0}
           w={{ base: "100%", md: "300px" }}
           h={"auto"}
-          py={{ base: 16, md: 0 }}
           border={"1px solid #e0e0e0"}
         >
           <IconButton
@@ -254,11 +254,11 @@ export default function page() {
               justifyContent={"flex-start"}
               gap={6}
               p={{ base: 6, md: 0 }}
-              position={{ base: "absolute", md: "relative" }}
+              position={{ base: "fixed", md: "relative" }}
               h={{ base: "100%", md: "80px" }}
               w={{ base: "100%", md: "auto" }}
               top={0}
-              zIndex={99}
+              zIndex={101}
               bgColor={{ base: "white", md: "transparent" }}
             >
               <IconButton
@@ -339,16 +339,20 @@ export default function page() {
             direction={"row"}
             justifyContent={"flex-start"}
             alignItems={"center"}
+            h={"100%"}
             gap={3}
+            overflowX={"auto"}
           >
             {filters.map((filter) =>
               searchParams.getAll(filter.queryString).map((value, index) => {
                 return (
                   <Button
+                    flexShrink={0}
                     key={index}
                     leftIcon={<Icon as={CloseIcon} w={2} h={2} />}
                     fontSize={{ base: 10, md: 12 }}
                     bgColor={"orange"}
+                    borderRadius={"24px"}
                     onClick={() => {
                       router.push(
                         pathname +
@@ -366,9 +370,9 @@ export default function page() {
           <Flex
             direction={"row"}
             alignItems={"center"}
-            justifyContent={"flex-start"}
+            justifyContent={{ base: "center", md: "flex-start" }}
             flexWrap={"wrap"}
-            gap={8}
+            gap={6}
           >
             {products
               .filter((item) => item.category === params.name)
