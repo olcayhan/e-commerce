@@ -104,7 +104,7 @@ export default function Banner({ item }: Prop) {
           direction={"row"}
           justifyContent={"flex-start"}
           alignItems={"center"}
-          overflow={{ base: "scroll", md: "hidden" }}
+          overflowX={{ base: "scroll", md: "hidden" }}
         >
           <Button
             visibility={{ base: "hidden", md: "visible" }}
